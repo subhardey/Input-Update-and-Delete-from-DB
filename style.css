@@ -1,0 +1,87 @@
+body{
+ background-color: #ced6e0;
+ color: #130f40;
+ font-family: "Monospace", Andale Mono, monospace;
+
+}
+
+
+.column{
+	float: left;
+	width: 26%;
+	padding: 22px;
+	height: 564px;
+	margin: 25px;
+	border-radius: 10px;
+}
+
+#Input{
+	background-color: #2ed573;
+
+}
+
+#Update{
+	background-color: #1e90ff;
+}
+
+#Delete{
+	background-color: #e67e22 ;
+}
+
+
+h3{
+	color: #130f40;
+	font-family: ;
+	font-size: 25px;
+}
+
+label{
+	color: #130f40;
+	font-size: 20px;
+
+}
+
+input{
+	margin-top: 5px;
+	margin-bottom: 20px;
+	padding: 12px 20px;
+	border-radius: 4px;
+	border: 1px solid #130f40;
+	box-sizing: border-box;
+
+	
+}
+
+.inputBox{
+	width: 100%;
+	font-family: "Monospace", Andale Mono, monospace;
+	font-size: 18px;
+}
+
+button{
+	padding: 12px 20px;
+	border-radius: 4px;
+	border: 1px solid #130f40;
+	box-sizing: border-box;
+	width: 100%;
+	background-color: #8e44ad;
+	font-family: "Monospace", Andale Mono, monospace;
+	font-weight: bold;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.radioBtn{
+	cursor: pointer;
+	
+}
+
+button:hover{
+	background-color: #530077;
+}
+
+#notification{
+	color: red;
+	font-family: "Monospace", Andale Mono, monospace;
+	font-size: 21px;
+}
