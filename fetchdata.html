@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>fetch all data</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="dynamicrow.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="./stylefetch.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div id="container">
+      <table id="tableshow"></table>
+    </div>
+
+    <!-- <div id="saveBTNcontainer">
+      <button id="saveBTN">Save</button>
+    </div> -->
+
+    <!-- =======================script============================================================ -->
+    <script>
+      $(function() {
+        console.log("new fun");
+        const varvar = "varvar";
+
+        $.ajax({
+          url: "http://localhost:4041/fetch",
+          type: "post",
+          contentType: "application/json",
+          dataType: "json",
+          data: JSON.stringify({ data2: "something" }),
+          success: function(pass) {
+            console.log("in fetch ajax success!");
+            // console.log(pass); //<-- prints everything in db
+
+            $("#tableshow").append(
+              `<tr>
+
+                <th>Name</th>
+                <th>Email ID</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Edit</th>
+                <th>Trash</th>
+
+                </tr> `
+            );
+
+            for (let index = 0; index < pass.length; index++) {
+              // console.log(pass[index]._id); //<- works
+              $("#tableshow").append(
+                `<tr>
+                <td class="colid">${pass[index]._id}</td>
+                <td>${pass[index].name}</td>
+                <td>${pass[index].email}</td>
+                <td>${pass[index].gender}</td>
+                <td>${pass[index].age}</td>
+                <td class="editbtntd">
+                  <button class="editBTN" id="editid_${index + 1}">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+                <td class="deletebtntd">
+                  <button class="deleteBtn" id="deleteid_${index + 1}">
+                  <i class="fa fa-trash" aria-hidden="true"></i></button></td>
+                </tr> `
+              );
+            }
+
+            $("#tableshow td:nth-child(1)").hide();
+          }
+        });
+        // ---------------on edit button click---------------------------------------------------------
+
+        $(document).on("click", ".editBTN", function() {
+          console.log("edit button clicked");
+
+          var editbuttonid = $(this).attr("id"); //<-- didnt use in this project
+          console.log(`id is ${editbuttonid}`);
+
+          var split = editbuttonid.split("_");
+          console.log(`after _ : ${split[1]}`); //<-- works
+
+          var id = $(this)
+            .parents("tr")
+            .find("td:eq(0)")
+            .text();
+
+          var name = $(this)
+            .parents("tr")
+            .find("td:eq(1)")
+            .text();
+
+          // var name = "ajdkbkajdsfb dfkjadfh";
+
+          var email = $(this)
+            .parents("tr")
+            .find("td:eq(2)")
+            .text();
+
+          var gender = $(this)
+            .parents("tr")
+            .find("td:eq(3)")
+            .text();
+
+          var age = $(this)
+            .parents("tr")
+            .find("td:eq(4)")
+            .text();
+
+          console.log(name); //<-- works
+
+          // $(this)
+          //   .parents("tr")
+          //   .find("td:eq(1)")
+          //   .html('<input name="edit_name" value="' + name + '">'); //<-- also works
+
+          $(this)
+            .parents("tr")
+            .find("td:eq(1)")
+            .html(`<input id="nameinput" name="edit_name" value="${name}">`);
+          $(this)
+            .parents("tr")
+            .find("td:eq(2)")
+            .html(
+              `<input id="emailinput" name='edit_email' value= "${email}">`
+            );
+          $(this)
+            .parents("tr")
+            .find("td:eq(3)")
+            .html(
+              `<input id="genderinput" name='edit_gender' value= "${gender}">`
+            );
+          $(this)
+            .parents("tr")
+            .find("td:eq(4)")
+            .html(`<input id="ageinput" name='edit_age' value= "${age}">`);
+
+          // --------------------------------------
+
+          $(this)
+            .parents("tr")
+            .find("td:eq(5)")
+            .append(
+              `<button class='updateBtn' id="updateid_${split[1]}">Update</button>
+              <button class='cancelBtn'>Cancel</button>`
+            );
+          $(this).hide();
+
+          // ------------------------cancel button (under edit)-------------------------------------------
+
+          $(document).on("click", ".cancelBtn", function() {
+            // console.log(name);  //<-- works
+            console.log("cancel button clicked");
+
+            location.reload(true);
+
+            // $(this)
+            //   .parents("tr")
+            //   .find("td:eq(1)")
+            //   .text(name);
+            // $(this)
+            //   .parents("tr")
+            //   .find("td:eq(2)")
+            //   .text(email);
+            // $(this)
+            //   .parents("tr")
+            //   .find("td:eq(3)")
+            //   .text(gender);
+            // $(this)
+            //   .parents("tr")
+            //   .find("td:eq(4)")
+            //   .text(age);
+
+            // $(this)
+            //   .parents("tr")
+            //   .find(".editBTN")
+            //   .show();
+            // $(this)
+            //   .parents("tr")
+            //   .find(".updateBtn")
+            //   .remove();
+            // $(this)
+            //   .parents("tr")
+            //   .find(".cancelBtn")
+            //   .remove();
+
+            // --------------^reloaded the page insted ^ of doing the commented out sec above^--------------------------------------
+          }); //<-- cancel fn end
+
+          // --------------------update button (inside edit)------------------------------------
+          $(document).on("click", ".updateBtn", function() {
+            console.log("update button clicked");
+
+            var updatebuttonid = $(this).attr("id"); //<-- didnt use in this project
+            console.log(`id is ${updatebuttonid}`);
+
+            var name = $(this)
+              .parents("tr")
+              .find("input[name='edit_name']")
+              .val();
+            var email = $(this)
+              .parents("tr")
+              .find("input[name='edit_email']")
+              .val();
+            var gender = $(this)
+              .parents("tr")
+              .find("input[name='edit_gender']")
+              .val();
+            var age = $(this)
+              .parents("tr")
+              .find("input[name='edit_age']")
+              .val();
+            console.log(id); //<-- works
+
+            var inputArray = new Array();
+            inputArray.push(id);
+            inputArray.push(name);
+            inputArray.push(email);
+            inputArray.push(gender);
+            inputArray.push(age);
+
+            for (var i = 0; i < inputArray.length; i++) {
+              console.log(JSON.stringify(inputArray[i]));
+            }
+
+            $.ajax({
+              url: "http://localhost:4041/update",
+              type: "post",
+              contentType: "application/json",
+              dataType: "json",
+              data: JSON.stringify({ dataUp: inputArray }),
+
+              success: function(result) {
+                console.log(result.data);
+              }
+            });
+
+            location.reload(true);
+            // console.log("Reloaded after updating!"); //<-- doesnt print cz reloads before print
+
+            // $(this)
+            //   .parents("tr")
+            //   .find("td:eq(1)")
+            //   .text(name);
+            // $(this)
+            //   .parents("tr")
+            //   .find("td:eq(2)")
+            //   .text(email);
+            // $(this)
+            //   .parents("tr")
+            //   .find("td:eq(3)")
+            //   .text(gender);
+            // $(this)
+            //   .parents("tr")
+            //   .find("td:eq(4)")
+            //   .text(age);
+
+            // $(this)
+            //   .parents("tr")
+            //   .find(".editBTN")
+            //   .show();
+            // $(this)
+            //   .parents("tr")
+            //   .find(".cancelBtn")
+            //   .remove();
+            // $(this)
+            //   .parents("tr")
+            //   .find(".updateBtn")
+            //   .remove();
+          }); //<-- update end
+        }); //<-- edit button fn end
+
+        $(document).on("click", ".deleteBtn", function() {
+          console.log("Delete button clicked");
+
+          var id = $(this)
+            .parents("tr")
+            .find("td:eq(0)")
+            .text();
+
+          $.ajax({
+            url: "http://localhost:4041/delete",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({ datadel: id }),
+
+            success: function(result) {
+              console.log(result.data);
+            }
+          });
+          location.reload(true);
+        });
+      });
+    </script>
+  </body>
+</html>
