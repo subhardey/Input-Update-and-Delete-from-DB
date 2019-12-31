@@ -1,8 +1,8 @@
 {
-  "name": "19-12-04",
+  "name": "2019-12-23",
   "version": "1.0.0",
   "description": "",
-  "main": "InputUpdateDeleteDB.js",
+  "main": "dynamicrow.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -12,7 +12,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "mongoose": "^5.7.13",
+    "mongoose": "^5.8.2",
     "path": "^0.12.7"
   }
 }

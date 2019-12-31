@@ -1,87 +1,128 @@
-body{
- background-color: #ced6e0;
- color: #130f40;
- font-family: "Monospace", Andale Mono, monospace;
-
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ced6e054;
+  font-family: "Monospace", Andale Mono, monospace;
 }
 
-
-.column{
-	float: left;
-	width: 26%;
-	padding: 22px;
-	height: 564px;
-	margin: 25px;
-	border-radius: 10px;
+#container {
+  margin: 9% 0 0 18%;
 }
 
-#Input{
-	background-color: #2ed573;
-
+input {
+  width: 200px;
+  height: 20px;
+  border: 1px solid #2c3e50;
+  border-radius: 3px;
+  text-align: center;
 }
 
-#Update{
-	background-color: #1e90ff;
+#addNewBTN {
+  background-color: lightseagreen;
+  color: white;
+  font-size: 15px;
+  border: 1px solid darkgreen;
+  border-radius: 3px;
+  height: 30px;
+  margin-top: 25px;
+  margin-left: 4px;
+  margin-right: 10px;
+  float: left;
 }
 
-#Delete{
-	background-color: #e67e22 ;
+#addNewBTN:hover {
+  background-color: #0e6b66;
+  cursor: pointer;
 }
 
-
-h3{
-	color: #130f40;
-	font-family: ;
-	font-size: 25px;
+#listBTN {
+  background-color: #2ecc71;
+  color: white;
+  font-size: 15px;
+  border: 1px solid darkgreen;
+  border-radius: 2px;
+  height: 30px;
+  margin-top: 25px;
+  margin-left: 4px;
+  margin-right: 10px;
+  float: left;
 }
 
-label{
-	color: #130f40;
-	font-size: 20px;
-
+#listBTN:hover {
+  background-color: #005a26;
+  cursor: pointer;
 }
 
-input{
-	margin-top: 5px;
-	margin-bottom: 20px;
-	padding: 12px 20px;
-	border-radius: 4px;
-	border: 1px solid #130f40;
-	box-sizing: border-box;
-
-	
+#submitBTN {
+  background-color: #5d45ca;
+  color: white;
+  font-size: 15px;
+  border: 1px solid darkgreen;
+  border-radius: 3px;
+  height: 30px;
+  margin-top: 25px;
+  margin-left: 4px;
+  margin-right: 10px;
+  float: left;
 }
 
-.inputBox{
-	width: 100%;
-	font-family: "Monospace", Andale Mono, monospace;
-	font-size: 18px;
+#submitBTN:hover {
+  background-color: #341f97;
+  cursor: pointer;
 }
 
-button{
-	padding: 12px 20px;
-	border-radius: 4px;
-	border: 1px solid #130f40;
-	box-sizing: border-box;
-	width: 100%;
-	background-color: #8e44ad;
-	font-family: "Monospace", Andale Mono, monospace;
-	font-weight: bold;
-	font-size: 20px;
-	cursor: pointer;
+.deleteBTN {
+  background-color: red;
+  color: white;
+  border: 1px solid red;
+  border-radius: 15px;
+  margin-left: 10px;
+  height: 22px;
+  width: 22px;
+  /*font-weight: bold;*/
 }
 
-.radioBtn{
-	cursor: pointer;
-	
+.deleteBTN:hover {
+  background-color: #da0000;
+  border: 1px solid #da0000;
+  cursor: pointer;
 }
 
-button:hover{
-	background-color: #530077;
+th,
+td {
+  margin-right: 10px;
+  font-size: 20px;
 }
 
-#notification{
-	color: red;
-	font-family: "Monospace", Andale Mono, monospace;
-	font-size: 21px;
+/* html {
+  background: black;
+  filter: invert(1); //<--- inverts all colors
+} */
+
+/* #tableshow tbody tr td:nth-child(2) {       //<- not working
+  margin-left: 20px;
+} */
+
+/* .editbtntd {
+  margin-left: 20px;   //<-- not working
+} */
+
+#saveBTNcontainer {
+  margin: 20px 0 50px 18%;
+}
+
+#saveBTN {
+  height: 38px;
+  width: 84px;
+  border: 1px solid green;
+  background-color: #59b300;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+#saveBTN:hover {
+  background-color: #1a750f;
+  cursor: pointer;
 }
